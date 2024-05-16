@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 )
 
 func serveIndex(w http.ResponseWriter, r *http.Request) {
@@ -31,5 +32,10 @@ func main() {
 		serveWS(hub, w, r)
 	})
 
-	log.Fatal(http.ListenAndServe("$PORT", nil))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8000" // Default port if not specified
+	}
+	
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
