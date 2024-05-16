@@ -31,5 +31,5 @@ func main() {
 		serveWS(hub, w, r)
 	})
 
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	log.Fatal(http.ListenAndServe("$PORT", nil))
 }
