@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+
+    <!-- HTMX Websockets -->
+    <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/ws.js"></script>
+
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Chat With Gippity</h1>
+
+    <div hx-ext="ws" ws-connect="/ws">
+        <div>
+            <ul id="chatroom" hx-swap="beforeend" hx-swap-oob="beforeend"></ul>
+        </div>
+
+        <form id="form" ws-send>
+            <input name="text" type="text" placeholder="Type here...">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>
